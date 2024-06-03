@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Jun 03 14:17:05 AST 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018f-ddd1-317c-000003894090 
+on database directory /mnt/c/Users/ashafik/Desktop/poc/Spark-delta-iceberg/metastore_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5ffd2b27 
+Loaded from file:/home/abdelbarre/.local/lib/python3.10/site-packages/pyspark/jars/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=22.0.1+8-16
+user.dir=/mnt/c/Users/ashafik/Desktop/poc/Spark-delta-iceberg
+os.name=Linux
+os.arch=amd64
+os.version=5.15.133.1-microsoft-standard-WSL2
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

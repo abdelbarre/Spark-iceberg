@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+
+  spark-master:
+    image: bitnami/spark:latest
+    container_name: spark-master-minio-iceberg
+    environment:
+      - SPARK_MODE=master
+      - SPARK_SUBMIT_ARGS=--packages io.delta:delta-core_2.12:1.0.0,org.apache.iceberg:iceberg-spark3-runtime:0.12.0
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+
+  spark-worker:
+    image: bitnami/spark:latest
+    container_name: spark-worker-minio-iceberg
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_SUBMIT_ARGS=--packages io.delta:delta-core_2.12:1.0.0,org.apache.iceberg:iceberg-spark3-runtime:0.12.0
+    depends_on:
+      - spark-master
+    ports:
+      - "8081:8081"
+
+volumes:
+  minio_data:
+  jupyter_data:
