@@ -19,7 +19,7 @@ services:
     container_name: spark-master-minio-iceberg
     environment:
       - SPARK_MODE=master
-      - SPARK_SUBMIT_ARGS=--packages io.delta:delta-core_2.12:1.0.0,org.apache.iceberg:iceberg-spark3-runtime:0.12.0
+      - SPARK_SUBMIT_ARGS=--packages org.apache.iceberg:iceberg-spark3-runtime:0.12.0
     ports:
       - "7077:7077"
       - "8080:8080"
@@ -30,7 +30,7 @@ services:
     environment:
       - SPARK_MODE=worker
       - SPARK_MASTER_URL=spark://spark-master:7077
-      - SPARK_SUBMIT_ARGS=--packages io.delta:delta-core_2.12:1.0.0,org.apache.iceberg:iceberg-spark3-runtime:0.12.0
+      - SPARK_SUBMIT_ARGS=--packages org.apache.iceberg:iceberg-spark3-runtime:0.12.0
     depends_on:
       - spark-master
     ports:

@@ -55,6 +55,3 @@ iceberg_df = iceberg_spark.read.format("iceberg").load(f"{iceberg_table_location
 # Show the dataframe schema and some sample data
 iceberg_df.printSchema()
 iceberg_df.show()
-
-# delta_table_location = f"s3a://{minio_bucket}/delta_data/"
-# iceberg_df.write.format("delta").mode("overwrite").save(delta_table_location)
