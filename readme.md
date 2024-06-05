@@ -121,7 +121,8 @@ First, check is to visit [http://localhost:9001/browser](http://localhost:9001/b
 
 ![Minio Service](https://cdn-images-1.medium.com/max/800/1*GupVjmXsedM-BouZG9kMyg.png)
 
-Minio service is up 😉. After all services are up, let's move to create a simple data pipeline with read and write from Apache Iceberg using Apache Spark and Minio.
+Minio service is up 😉. After all services are up, let's move to create a simple data pipeline with read and write from Apache Iceberg using Apache Spark and Minio, for that please check the exisited python code in **./src** folder
+c
 
 ## Summary
 
