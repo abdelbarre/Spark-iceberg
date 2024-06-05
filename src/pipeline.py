@@ -5,8 +5,8 @@ from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 
 client = Minio(
     "127.0.0.1:9000",
-    access_key="minioadmin",
-    secret_key="minioadmin",
+    access_key="your_account_name",
+    secret_key="your_password",
     secure=False
 )
 
@@ -29,8 +29,8 @@ iceberg_builder = SparkSession.builder \
     .config("spark.sql.catalog.spark_catalog", "org.apache.iceberg.spark.SparkCatalog") \
     .config("spark.sql.catalog.spark_catalog.type", "hadoop") \
     .config("spark.sql.catalog.spark_catalog.warehouse", f"s3a://{minio_bucket}/iceberg_data/") \
-    .config("spark.hadoop.fs.s3a.access.key", "minioadmin") \
-    .config("spark.hadoop.fs.s3a.secret.key", "minioadmin") \
+    .config("spark.hadoop.fs.s3a.access.key", "your_account_name") \
+    .config("spark.hadoop.fs.s3a.secret.key", "your_password") \
     .config("spark.hadoop.fs.s3a.endpoint", "http://localhost:9000") \
     .config("spark.hadoop.fs.s3a.path.style.access", "true") \
     .enableHiveSupport()
@@ -53,5 +53,12 @@ df.write \
 iceberg_df = iceberg_spark.read.format("iceberg").load(f"{iceberg_table_location}/iceberg_table_name")
 
 # Show the dataframe schema and some sample data
+print("**************************")
+print("This the Dataframe schema ")
+print("**************************")
 iceberg_df.printSchema()
+
+print("**************************")
+print("******Dataframe Data******")
+print("**************************")
 iceberg_df.show()
